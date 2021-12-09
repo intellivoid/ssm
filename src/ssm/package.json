@@ -1,0 +1,65 @@
+{
+    "package": {
+        "package_name": "net.intellivoid.ssm",
+        "name": "Software Service Manager",
+        "version": "1.0.0.0",
+        "author": "Zi Xing Narrakas",
+        "organization": "Intellivoid Technologies",
+        "description": "Manages software services like systemd or supervisord",
+        "url": "https://github.com/intellivoid/ssm",
+        "dependencies": [],
+        "configuration": {
+            "autoload_method": "generated_spl",
+            "main": null,
+            "post_installation": [],
+            "pre_installation": []
+        }
+    },
+    "components": [
+        {
+            "required": true,
+            "file": "Abstracts/RestartCondition.php"
+        },
+        {
+            "required": true,
+            "file": "Abstracts/Time.php"
+        },
+        {
+            "required": true,
+            "file": "Classes/IniParser.php"
+        },
+        {
+            "required": true,
+            "file": "Exceptions/FileException.php"
+        },
+        {
+            "required": true,
+            "file": "Exceptions/InvalidDataException.php"
+        },
+        {
+            "required": true,
+            "file": "Utilities/Parser.php"
+        },
+        {
+            "required": true,
+            "file": "ssm.php"
+        },
+        {
+            "required": true,
+            "file": "Objects/LunchCondition.php"
+        },
+        {
+            "required": true,
+            "file": "Objects/ServiceConfiguration.php"
+        },
+        {
+            "required": true,
+            "file": "Objects/IniSection.php"
+        },
+        {
+            "required": true,
+            "file": "Objects/IniFile.php"
+        }
+    ],
+    "files": []
+}
