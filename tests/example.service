@@ -1,4 +1,22 @@
+[service]
+Description=HTOP Service example, nothing special about it
+AutomaticallyStart=false
+EnableProcessLogging=true
+EnableWatchdogLogging=true
+LogFile=/var/log/$service.log
+MaxLogSize=100M
+
 [start]
+# Run HTOP, the best Linux web server ever.
 Exec=/usr/bin/htop
 Restart=always
 LogStdout=false
+ErrorExitStatus=1 23
+
+[start_pre]
+# Check for internet connection before running the service, only restart this step if the program fails or crashes
+Exec=/usr/bin/wfi
+Restart=on-failure
+LogStdout=false
+SuccessExitStatus=0
+RestartForceExitStatus=50

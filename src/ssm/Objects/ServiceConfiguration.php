@@ -1,5 +1,7 @@
 <?php
 
+    /** @noinspection PhpMissingFieldTypeInspection */
+
     namespace ssm\Objects;
 
     use ssm\Classes\IniReader;
@@ -28,6 +30,62 @@
          * @var LunchCondition|null
          */
         public $StartPost;
+
+        /**
+         * The lunch condition to execute when the service stops
+         *
+         * @var LunchCondition|null
+         */
+        public $Stop;
+
+        /**
+         * The lunch condition to execute before running the stop condition
+         *
+         * @var LunchCondition|null
+         */
+        public $StopPre;
+
+        /**
+         * The lunch condition to execute after running the stop condition
+         *
+         * @var LunchCondition|null
+         */
+        public $StopPost;
+
+        /**
+         * The lunch condition to execute when the service has successfully loaded
+         *
+         * @var LunchCondition|null
+         */
+        public $Reload;
+
+        /**
+         * The lunch condition to execute before the service reloads
+         *
+         * @var LunchCondition|null
+         */
+        public $ReloadPre;
+
+        /**
+         * The lunch condition to execute after the service successfully reloads
+         *
+         * @var LunchCondition|null
+         */
+        public $ReloadPost;
+
+        /**
+         * The lunch condition to execute after the service fails
+         *
+         * @var LunchCondition|null
+         */
+        public $OnFailure;
+
+        /**
+         * The lunch condition to execute after the service has successfully executed and exited
+         *
+         * @var LunchCondition|null
+         */
+        public $OnSuccess;
 
         /**
          * Constructs object from a INI file
@@ -70,6 +128,30 @@
             if($this->StartPost !== null)
                 $return_results['start_post'] = $this->StartPost->toArray();
 
+            if($this->Stop !== null)
+                $return_results['stop'] = $this->Stop->toArray();
+
+            if($this->StopPre !== null)
+                $return_results['stop_pre'] = $this->StopPre->toArray();
+
+            if($this->StopPost !== null)
+                $return_results['stop_post'] = $this->StopPost->toArray();
+
+            if($this->Reload !== null)
+                $return_results['reload'] = $this->Reload->toArray();
+
+            if($this->ReloadPre !== null)
+                $return_results['reload_pre'] = $this->ReloadPre->toArray();
+
+            if($this->ReloadPost !== null)
+                $return_results['reload_post'] = $this->ReloadPost->toArray();
+
+            if($this->OnFailure !== null)
+                $return_results['on_failure'] = $this->OnFailure->toArray();
+
+            if($this->OnSuccess !== null)
+                $return_results['on_success'] = $this->OnSuccess->toArray();
+
             return $return_results;
         }
 
@@ -91,6 +173,30 @@
 
             if(isset($data['start_post']))
                 $ServiceConfigurationObject->StartPost = LunchCondition::fromArray($data['start_post']);
+
+            if(isset($data['stop']))
+                $ServiceConfigurationObject->Stop = LunchCondition::fromArray($data['stop']);
+
+            if(isset($data['stop_pre']))
+                $ServiceConfigurationObject->StopPre = LunchCondition::fromArray($data['stop_pre']);
+
+            if(isset($data['stop_post']))
+                $ServiceConfigurationObject->StopPost = LunchCondition::fromArray($data['stop_post']);
+
+            if(isset($data['reload']))
+                $ServiceConfigurationObject->Reload = LunchCondition::fromArray($data['reload']);
+
+            if(isset($data['reload_pre']))
+                $ServiceConfigurationObject->ReloadPre = LunchCondition::fromArray($data['reload_pre']);
+
+            if(isset($data['reload_post']))
+                $ServiceConfigurationObject->Reload = LunchCondition::fromArray($data['reload_post']);
+
+            if(isset($data['on_failure']))
+                $ServiceConfigurationObject->OnFailure = LunchCondition::fromArray($data['on_failure']);
+
+            if(isset($data['on_success']))
+                $ServiceConfigurationObject->OnSuccess = LunchCondition::fromArray($data['on_success']);
 
             return $ServiceConfigurationObject;
         }
