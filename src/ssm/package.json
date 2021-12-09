@@ -26,7 +26,11 @@
         },
         {
             "required": true,
-            "file": "Classes/IniParser.php"
+            "file": "Classes/IniReader.php"
+        },
+        {
+            "required": true,
+            "file": "Classes/IniWriter.php"
         },
         {
             "required": true,
@@ -35,6 +39,10 @@
         {
             "required": true,
             "file": "Exceptions/InvalidDataException.php"
+        },
+        {
+            "required": true,
+            "file": "Exceptions/ConfigurationException.php"
         },
         {
             "required": true,
@@ -51,15 +59,9 @@
         {
             "required": true,
             "file": "Objects/ServiceConfiguration.php"
-        },
-        {
-            "required": true,
-            "file": "Objects/IniSection.php"
-        },
-        {
-            "required": true,
-            "file": "Objects/IniFile.php"
         }
     ],
-    "files": []
+    "files": [
+        "package.json"
+    ]
 }

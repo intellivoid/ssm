@@ -1,5 +1,7 @@
 <?php
 
+    /** @noinspection PhpMissingFieldTypeInspection */
+
     namespace ssm\Objects;
 
     use ssm\Abstracts\RestartCondition;
@@ -159,10 +161,10 @@
          */
         public function toArray(): array
         {
-            return [
+            $results = [
                 'Exec' => $this->Exec,
-                'Args' => implode(':', $this->Arguments),
-                'Env' => implode(':', $this->EnvironmentVariables),
+                'Args' => ($this->Arguments == null ? null : implode(':', $this->Arguments)),
+                'Env' => ($this->EnvironmentVariables == null ? null : implode(':', $this->EnvironmentVariables)),
                 'Cwd' => $this->CurrentWorkingDirectory,
                 'Restart' => $this->Restart,
                 'MaxFailureRestarts' => $this->MaxFailureRestarts,
@@ -170,13 +172,22 @@
                 'TimeoutStartSec' => $this->TimeoutStartSeconds,
                 'TimeoutStopSec' => $this->TimeoutStopSeconds,
                 'RuntimeMaxSec' => $this->RuntimeMaxSeconds,
-                'SuccessExitStatus' => implode(' ', $this->SuccessExitStatus),
-                'ErrorExitStatus' => implode(' ', $this->ErrorExitStatus),
-                'RestartPreventExitStatus' => implode(' ', $this->RestartPreventExitStatus),
-                'RestartForceExitStatus' => implode(' ', $this->RestartForceExitStatus),
-                'LogStdout' => $this->LogStdout,
-                'LogStderr' => $this->LogStderr
+                'SuccessExitStatus' => ($this->SuccessExitStatus == null ? null : implode(' ', $this->SuccessExitStatus)),
+                'ErrorExitStatus' => ($this->ErrorExitStatus == null ? null : implode(' ', $this->ErrorExitStatus)),
+                'RestartPreventExitStatus' => ($this->RestartPreventExitStatus == null ? null : implode(' ', $this->RestartPreventExitStatus)),
+                'RestartForceExitStatus' => ($this->RestartForceExitStatus == null ? null : implode(' ', $this->RestartForceExitStatus)),
+                'LogStdout' => ($this->LogStdout == true ? 'true' : 'false'),
+                'LogStderr' => ($this->LogStderr == true ? 'true' : 'false')
             ];
+
+            $return_results = [];
+            foreach($results as $option => $value)
+            {
+                if($value !== null)
+                    $return_results[$option] = $value;
+            }
+
+            return $return_results;
         }
 
         /**

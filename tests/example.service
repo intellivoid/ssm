@@ -1,3 +1,4 @@
 [start]
 Exec=/usr/bin/htop
 Restart=always
+LogStdout=false

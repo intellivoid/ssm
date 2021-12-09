@@ -2,6 +2,10 @@
 
     namespace ssm\Objects;
 
+    use ssm\Classes\IniReader;
+    use ssm\Classes\IniWriter;
+    use ssm\Exceptions\ConfigurationException;
+
     class ServiceConfiguration
     {
         /**
@@ -30,11 +34,22 @@
          *
          * @param string $file
          * @return ServiceConfiguration
+         * @throws ConfigurationException
          */
         public static function fromFile(string $file): ServiceConfiguration
         {
-            $ini_file = IniFile::load($file);
-            return ServiceConfiguration::fromArray($ini_file->toArray());
+            $ini_reader = new IniReader();
+            return ServiceConfiguration::fromArray($ini_reader->readFile($file));
+        }
+
+        /**
+         * @return string
+         * @throws ConfigurationException
+         */
+        public function toConfiguration(): string
+        {
+            $ini_writer = new IniWriter();
+            return $ini_writer->writeToString($this->toArray());
         }
 
         /**
