@@ -8,7 +8,7 @@
     use ssm\Abstracts\Time;
     use ssm\Utilities\Parser;
 
-    class LunchCondition
+    class LaunchCondition
     {
         /**
          * The main execution point of the lunch condition
@@ -194,23 +194,23 @@
          * Constructs object from an array representation
          *
          * @param array $data
-         * @return LunchCondition
+         * @return LaunchCondition
          */
-        public static function fromArray(array $data): LunchCondition
+        public static function fromArray(array $data): LaunchCondition
         {
-            $LunchConditionObject = new LunchCondition();
+            $LaunchConditionObject = new LaunchCondition();
 
             if(isset($data['Exec']))
-                $LunchConditionObject->Exec = $data['Exec'];
+                $LaunchConditionObject->Exec = $data['Exec'];
 
             if(isset($data['Args']))
-                $LunchConditionObject->Arguments = Parser::parseArgumentsString($data['Args']);
+                $LaunchConditionObject->Arguments = Parser::parseArgumentsString($data['Args']);
 
             if(isset($data['Env']))
-                $LunchConditionObject->EnvironmentVariables = Parser::parseArgumentsString($data['Env']);
+                $LaunchConditionObject->EnvironmentVariables = Parser::parseArgumentsString($data['Env']);
 
             if(isset($data['Cwd']))
-                $LunchConditionObject->CurrentWorkingDirectory = $data['Cwd'];
+                $LaunchConditionObject->CurrentWorkingDirectory = $data['Cwd'];
 
             if(isset($data['Restart']))
             {
@@ -221,36 +221,36 @@
                     case RestartCondition::Always:
                     case RestartCondition::UnlessStopped:
                     case RestartCondition::OnSuccess:
-                        $LunchConditionObject->Restart = strtolower($data['Restart']);
+                        $LaunchConditionObject->Restart = strtolower($data['Restart']);
                         break;
 
                     default:
-                        $LunchConditionObject->Restart = RestartCondition::No;
+                        $LaunchConditionObject->Restart = RestartCondition::No;
                 }
             }
 
             if(isset($data['MaxFailureRestarts']))
-                $LunchConditionObject->MaxFailureRestarts = (int)$data['MaxFailureRestarts'];
+                $LaunchConditionObject->MaxFailureRestarts = (int)$data['MaxFailureRestarts'];
 
             if(isset($data['MaxAutomaticRestarts']))
-                $LunchConditionObject->MaxAutomaticRestarts = (int)$data['MaxAutomaticRestarts'];
+                $LaunchConditionObject->MaxAutomaticRestarts = (int)$data['MaxAutomaticRestarts'];
 
             if(isset($data['TimeoutStartSec']))
-                $LunchConditionObject->TimeoutStartSeconds = (int)$data['TimeoutStartSec'];
+                $LaunchConditionObject->TimeoutStartSeconds = (int)$data['TimeoutStartSec'];
 
             if(isset($data['TimeoutStopSec']))
-                $LunchConditionObject->TimeoutStopSeconds = (int)$data['TimeoutStopSec'];
+                $LaunchConditionObject->TimeoutStopSeconds = (int)$data['TimeoutStopSec'];
 
             if(isset($data['RuntimeMaxSec']))
-                $LunchConditionObject->RuntimeMaxSeconds = (int)$data['RuntimeMaxSec'];
+                $LaunchConditionObject->RuntimeMaxSeconds = (int)$data['RuntimeMaxSec'];
 
             if(isset($data['SuccessExitStatus']))
             {
                 foreach(explode(' ', $data['SuccessExitStatus']) as $item)
                 {
-                    if(in_array((int)$item, $LunchConditionObject->SuccessExitStatus) == false)
+                    if(in_array((int)$item, $LaunchConditionObject->SuccessExitStatus) == false)
                     {
-                        $LunchConditionObject->SuccessExitStatus[] = (int)$item;
+                        $LaunchConditionObject->SuccessExitStatus[] = (int)$item;
                     }
                 }
             }
@@ -259,45 +259,45 @@
             {
                 foreach(explode(' ', $data['ErrorExitStatus']) as $item)
                 {
-                    if(in_array((int)$item, $LunchConditionObject->ErrorExitStatus) == false)
+                    if(in_array((int)$item, $LaunchConditionObject->ErrorExitStatus) == false)
                     {
-                        $LunchConditionObject->ErrorExitStatus[] = (int)$item;
+                        $LaunchConditionObject->ErrorExitStatus[] = (int)$item;
                     }
                 }
             }
 
             if(isset($data['RestartPreventExitStatus']))
             {
-                $LunchConditionObject->RestartPreventExitStatus = [];
+                $LaunchConditionObject->RestartPreventExitStatus = [];
 
                 foreach(explode(' ', $data['RestartPreventExitStatus']) as $item)
                 {
-                    if(in_array((int)$item, $LunchConditionObject->RestartPreventExitStatus) == false)
+                    if(in_array((int)$item, $LaunchConditionObject->RestartPreventExitStatus) == false)
                     {
-                        $LunchConditionObject->RestartPreventExitStatus[] = (int)$item;
+                        $LaunchConditionObject->RestartPreventExitStatus[] = (int)$item;
                     }
                 }
             }
 
             if(isset($data['RestartForceExitStatus']))
             {
-                $LunchConditionObject->RestartForceExitStatus = [];
+                $LaunchConditionObject->RestartForceExitStatus = [];
 
                 foreach(explode(' ', $data['RestartForceExitStatus']) as $item)
                 {
-                    if(in_array((int)$item, $LunchConditionObject->RestartForceExitStatus) == false)
+                    if(in_array((int)$item, $LaunchConditionObject->RestartForceExitStatus) == false)
                     {
-                        $LunchConditionObject->RestartForceExitStatus[] = (int)$item;
+                        $LaunchConditionObject->RestartForceExitStatus[] = (int)$item;
                     }
                 }
             }
 
             if(isset($data['LogStdout']))
-                $LunchConditionObject->LogStdout = (bool)$data['LogStdout'];
+                $LaunchConditionObject->LogStdout = (bool)$data['LogStdout'];
 
             if(isset($data['LogStderr']))
-                $LunchConditionObject->LogStderr = (bool)$data['LogStderr'];
+                $LaunchConditionObject->LogStderr = (bool)$data['LogStderr'];
 
-            return $LunchConditionObject;
+            return $LaunchConditionObject;
         }
     }

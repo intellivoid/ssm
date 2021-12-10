@@ -29,14 +29,14 @@ documentation will explain what sections can be configured, and examples. The op
 provided by `ssm` are similar to what `systemd` provides.
 
 
-### Lunch Condition
+### Launch Condition
 
 A lunch condition is applied to many sections of the file that you can optionally add,
 this includes the main `start` condition that represents the main execution point of
 your service configuration, there can be many other lunch conditions that can be
 executed for example before and after your `start` condition runs, or before and after
 restart and stop conditions. Allowing you to fully customize and handle the service
-execution flow. Below is a table of options that a Lunch Condition section can consist
+execution flow. Below is a table of options that a Launch Condition section can consist
 of but note that some options may only be applicable to `start` and other lunch
 conditions. Not all options are required.
 
