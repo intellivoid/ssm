@@ -11,7 +11,9 @@
         "configuration": {
             "autoload_method": "generated_spl",
             "main": null,
-            "post_installation": [],
+            "post_installation": [
+                "post_install"
+            ],
             "pre_installation": []
         }
     },
@@ -22,7 +24,19 @@
         },
         {
             "required": true,
+            "file": "Abstracts/Invoker.php"
+        },
+        {
+            "required": true,
+            "file": "Abstracts/ServiceState.php"
+        },
+        {
+            "required": true,
             "file": "Abstracts/Time.php"
+        },
+        {
+            "required": true,
+            "file": "Classes/WatchDog.php"
         },
         {
             "required": true,
@@ -46,6 +60,10 @@
         },
         {
             "required": true,
+            "file": "Utilities/PathFinder.php"
+        },
+        {
+            "required": true,
             "file": "Utilities/Parser.php"
         },
         {
@@ -59,9 +77,18 @@
         {
             "required": true,
             "file": "Objects/ServiceConfiguration.php"
+        },
+        {
+            "required": true,
+            "file": "Objects/Service.php"
+        },
+        {
+            "required": true,
+            "file": "Objects/Pid.php"
         }
     ],
     "files": [
+        "post_install",
         "package.json"
     ]
 }

@@ -1,0 +1,21 @@
+<?php
+
+    $path = realpath(DIRECTORY_SEPARATOR . 'etc');
+    $path .= DIRECTORY_SEPARATOR . 'ssm';
+
+    if(file_exists($path) == false)
+    {
+        mkdir($path);
+        chmod($path, 0777);
+    }
+
+    if(file_exists($path . DIRECTORY_SEPARATOR . '.run') == false)
+    {
+        mkdir($path . DIRECTORY_SEPARATOR . '.run');
+        chmod($path . DIRECTORY_SEPARATOR . '.run', 0777);
+    }
+
+    if(file_exists($path . DIRECTORY_SEPARATOR . '.proc') == false)
+    {
+        mkdir($path . DIRECTORY_SEPARATOR . '.proc');
+    }

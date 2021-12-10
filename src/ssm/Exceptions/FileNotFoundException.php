@@ -5,7 +5,7 @@
     use Exception;
     use Throwable;
 
-    class FileException extends Exception
+    class FileNotFoundException extends Exception
     {
         /**
          * @param string $message

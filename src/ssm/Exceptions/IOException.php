@@ -5,7 +5,7 @@
     use Exception;
     use Throwable;
 
-    class InvalidDataException extends Exception
+    class IOException extends Exception
     {
         /**
          * @param string $message
