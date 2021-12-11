@@ -48,15 +48,23 @@
         },
         {
             "required": true,
-            "file": "Exceptions/FileException.php"
-        },
-        {
-            "required": true,
-            "file": "Exceptions/InvalidDataException.php"
+            "file": "Exceptions/WatchDogAlreadyRunningException.php"
         },
         {
             "required": true,
             "file": "Exceptions/ConfigurationException.php"
+        },
+        {
+            "required": true,
+            "file": "Exceptions/FileNotFoundException.php"
+        },
+        {
+            "required": true,
+            "file": "Exceptions/IOException.php"
+        },
+        {
+            "required": true,
+            "file": "Utilities/Functions.php"
         },
         {
             "required": true,
@@ -72,7 +80,7 @@
         },
         {
             "required": true,
-            "file": "Objects/LaunchCondition.php"
+            "file": "Objects/LunchCondition.php"
         },
         {
             "required": true,

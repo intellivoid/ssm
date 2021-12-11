@@ -9,6 +9,8 @@ MaxLogSize=28M
 [start]
 # Run HTOP, the best Linux web server ever.
 Exec=/usr/bin/htop
+Args=--verbose:--auth=netkas\:netkas:-d
+Env=GITHUB_API_KEY=foo
 Restart=always
 LogStdout=false
 ErrorExitStatus=1 23
