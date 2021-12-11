@@ -45,6 +45,7 @@
                 $count = 0;
                 $timeout_seconds = 3;
                 $got_lock = true;
+
                 while(!flock($this->SystemLockResource, LOCK_EX | LOCK_NB, $would_block))
                 {
                     if($would_block && $count++ < $timeout_seconds)
@@ -57,6 +58,7 @@
                         break;
                     }
                 }
+
                 if($got_lock == false)
                 {
                     fclose($this->SystemLockResource);
